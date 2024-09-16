@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewPetBreed</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" />
+
+    <link rel="stylesheet" href="{% static 'mynewstyle.css' %}" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        #myProgress {
+          width: 100%;
+          border-radius: 5px;
+          border-color: #333;
+          border-style:groove;
+          background-color: #ddd;
+        }
+        
+        #myBar {
+          width: 1%;
+          height: 30px;
+          border-radius: 5px;
+          background-color: #3bdcda;
+          transition: 3s;
+        }
+        </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        document.getElementById("countering2").style.display="none"; 
+        document.getElementById("countering3").style.display="none"; 
+        $(".toggle-btn1").click(function(){
+            document.getElementById("countering2").style.display="none";
+            document.getElementById("countering3").style.display="none";  
+            document.getElementById("countering1").style.display="block";
+        });
+        
+        $(".toggle-btn2").click(function(){
+            document.getElementById("countering1").style.display="none";
+            document.getElementById("countering3").style.display="none";
+            document.getElementById("countering2").style.display="block"; 
+
+        });
+
+        $(".toggle-btn3").click(function(){
+            document.getElementById("countering1").style.display="none";
+            document.getElementById("countering2").style.display="none";
+            document.getElementById("countering3").style.display="block"; 
+        });
+
+        
+        $(".togglel-btn2").click(function(){
+            document.getElementById("countering1").style.display="none";
+            document.getElementById("countering3").style.display="none";
+            document.getElementById("countering2").style.display="block"; 
+            $('#menu .items li').removeClass('active');
+            $('#menu .items li:nth-child(2)').addClass('active');
+        });
+
+        $(".togglel-btn3").click(function(){
+            document.getElementById("countering1").style.display="none";
+            document.getElementById("countering2").style.display="none";
+            document.getElementById("countering3").style.display="block"; 
+            $('#menu .items li').removeClass('active');
+            $('#menu .items li:nth-child(3)').addClass('active');
+
+        });
+
+        $("#menu .items li").click(function(){
+            $('#menu .items li').removeClass('active');
+            $(this).addClass('active');
+
+
+
+      });
+
+    
+    });
+    function myFunction (){
+        document.getElementById("signup").submit(); 
+    }
+
+
+    
+    </script>
+
+</head>
+<body>
+    <!-- <section id="newmenu"> -->
+    <section id ="menu">
+        <div class="logo">
+            <img src="/static/DogLogo.png" alt="">
+            <h2>PetAuto</h2>
+        </div>
+            <div class="items">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                <li class="active toggle-btn1"><i class="fas fa-hamburger active"></i><a href="#">Dashboard</a></li>
+                <li><i class="fas fa-user"></i><a href="#">My Profile</a></li>
+                <li><i class="fas fa-chart-pie"></i><a href="#">About</a></li>
+                <li><i class="fas fa-chart-pie"></i><a href="#"><button type="submit" class="logbtn"style="background-color: transparent; border:0px; font-size: 14px; color:White; font-weight: 300px;" name="cou5">Logout</button></a></li>
+                </form>
+                <!-- <li><i class="fas fa-chart-pie"></i><a href="#">Dashboard</a></li>
+                <li><i class="fas fa-chart-pie"></i><a href="#">Dashboard</a></li>
+                <li><i class="fas fa-chart-pie"></i><a href="#">Dashboard</a></li>
+             -->
+        </div>
+    </section>
+    <!-- </section> -->
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                <div>
+                    <i id="menu-btn" class="fas fa-bars"></i>
+                </div>
+                <!-- <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="search" placeholder="Search">
+                </div> -->
+
+
+                <div>
+                    <h3 style="color: white; padding-left: 20px;"> Hello Pet Parent !!!</h3>
+                </div>
+            </div>
+
+            <div class="profile">
+                <i class="far fa-bell" style="color: white;"></i>
+                <img src="/static/DogLogo.png" alt="">
+            </div>
+        </div>
+
+        
+        <h2 class="i-name">
+            DashBoard
+        </h2>
+        <div id="countering2">
+        <div class="values">
+            <!--<div class="val-box">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h3>82,345</h3>
+                    <span>New Users</span>
+                </div>
+            </div>-->
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>My Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>Your Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>His Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+ 
+
+
+
+        </div>
+
+        <div class="values">
+
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>My Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>Your Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>His Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+ 
+
+
+
+        </div>
+
+        <div class="values">
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>My Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>Your Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+            <div class="val-box">
+                <div class="card">
+                    <img src="/static/Doggo2.png" alt="">
+                    <div class="cap">
+                    <h3>His Doggo</h3>
+                    </div>
+                    <div class="card_details">
+                    <h3>82,345</h3>
+                    </div> 
+                </div>   
+            </div>
+
+ 
+
+
+
+        </div>
+        
+    <button type="submit" name="count2" class="togglel-btn3 btn btn-submit">NEXT</button>
+    </div>
+
+
+    <div class="container" id = "countering3">
+
+        <form id="signup" action="#" method="POST">
+            {% csrf_token %}
+            <div class="header">
+            
+                <h3>Pet Profile</h3>
+                
+                <p>Enter Your Detaisl Below...</p>
+                
+            </div>
+            
+            <div class="sep"></div>
+      
+            <div class="inputs">
+                
+
+                <input type="text" name ="pet_name" placeholder="Name" id="pet_name" autofocus />
+                <input type="text" name ="age" placeholder="Age" id="age" autofocus />
+                <input type="text" name ="color" placeholder="Color" id="color" autofocus /> 
+                
+                <!-- <input type="text" name ="owmer_name" placeholder="Name" autofocus />
+                <input type="email" name ="email" placeholder="e-mail" autofocus />
+                <input type="number" name ="owmer_no" placeholder="Mobile number" autofocus />
+                <textarea id= "addr" rows="4" cols="50" name="comment" form="usrform">
+                    </textarea>
+                <input type="text" name ="city" placeholder="City" autofocus />
+                <input type="text" name ="state" placeholder="State" autofocus />
+                <input type="number" name ="pincode" placeholder="Pincode" autofocus />
+      
+      
+                <div class="checkboxy">
+                    <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
+                </div>
+                
+                <a id="submit" href="#">SIGN UP FOR INVITE NOW</a> -->
+            
+            </div>
+            <button type="submit" name="count3" class="btn btn-submit">FINISH</button>
+        </form>
+        <!--<button onclick="myFunction()">Click me</button> -->
+        
+      </div>
+
+
+
+      <div class="container" id = "countering1">
+
+         <div class="mydata">
+            <div class="mydata1">
+            <button class="btn2" >OWNER</button><br><br>
+                <h3>Name : {{owner_name}}</h3>
+                <h3>Email : {{email}}</h3>
+                <h3>Phone No : {{owner_no}}</h3>
+                
+                <br>
+            </div>
+           <!--  <div class="mydata3">
+            <button class="btn2" >PET</button><br><br>
+                <h3>Name : Brownie<h3>
+                <h3>D.O.B : 11/06/12</h3>
+                <h3>Age : 10</h3>
+                
+            </div> -->
+
+
+        <div class="mydata3">
+            <button class="btn2" >PET</button><br><br>
+            {% for i in pet_name %}
+            <h3>Name : {{i.1}}</h3>
+            <h3>Age : {{i.2}}</h3>
+            <h3>Color : {{i.3}}</h3>
+            {% endfor %}
+        </div>    
+
+
+
+
+        </div> 
+
+
+
+        <div class="mydata2">
+            <button class="btn2" >BOWL STATUS</button><br><br>
+            <div id="myProgress">
+                <h2 id="demo"></h2>
+                <div id="myBar"></div>
+                <h3></h3>
+            </div>
+            <div id="sam" style="float: right ;"></div> 
+            <!-- <h3 style="float: right ;">90%</h3> -->
+            <br>
+            <button class="btn2" >TOTAL CONSUMPTION</button>
+                <h3>{{tot}} ml<h3><br>
+            
+            <!-- <button class="btn2" >DISPENSER STATUS</button>
+                <h3>Idle<h3><br> -->
+
+            <button class="btn2" >CONSUMTION FREQUENCY</button>
+                <h3>{{petact}}<h3>
+          
+        
+
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                <!-- <h1>JavaScript Progress Bar</h1>
+
+                <div id="sam">
+                </div> 
+                <div id="myProgress">
+                    <h2 id="demo"></h2>
+                  <div id="myBar"></div>
+                </div> -->
+
+                
+                <button class="btn2" type="submit" name="count4" onsubmit="move()">GetBar</button> 
+
+                </form>
+
+        </div> 
+
+
+
+    
+    
+
+
+
+<!-- <button onclick="move()">ShowBar</button>  -->
+
+
+
+<div style="width:600px ; height:315px; background: white; box-shadow: 0 3px 10px rgb(117 117 117); margin-left: -101px;
+margin-top: 30px; border-radius: 20px;" >
+<canvas id="myChart">
+
+</canvas>
+</div>
+
+<script>
+    let labels=['Morning', 'Afternoon','Evening','Night','MidNight' ]
+    var jar = "{{barmy|escapejs}}";
+    let itemData = [jar,0,0,0,0]
+
+    const data2= {
+        labels: labels,
+        datasets: [{
+            data: itemData,
+            backgroundColor: 'rgb(0,255,255)',
+            // hoverBorderColor: 'red'
+        }]
+    };
+
+    const config = {
+        type:'bar',
+        data:data2,
+        options:{
+            plugins:{
+                legend:{
+                    display:false
+                },
+                title:{
+                    display:true,
+                    text:'Daily Consumption'
+                }
+            }
+        }
+    }
+
+    const chart = new Chart(
+        document.getElementById('myChart'),
+        config
+
+    )
+  
+</script>
+
+
+
+
+
+
+
+    <div class="fornowhide" style="display: none;">
+        <form id="signup" action="#" method="POST">
+            {% csrf_token %}
+            <div class="header">
+            
+                <h3>Pet Owner Details</h3>
+                
+                <p>Enter Your Detaisl Below...</p>
+                
+            </div>
+            
+            <div class="sep"></div>
+      
+            <div class="inputs">
+            
+                <input type="text" name ="owner_name" placeholder= {{owner_name}} id="owner_name" autofocus />
+                <input type="text" name ="email" placeholder="e-mail" id="email" autofocus />
+                <input type="text" name ="owner_no" placeholder="Mobile number" id="owner_no" autofocus /> 
+                <!-- <textarea id= "addr" rows="4" cols="50" name="comment" form="usrform">
+                    </textarea> -->
+                <!-- <input type="text" name ="city" placeholder="City" autofocus />
+                <input type="text" name ="state" placeholder="State" autofocus />
+                <input type="number" name ="pincode" placeholder="Pincode" autofocus />  -->
+      
+      
+                <div class="checkboxy">
+                    <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
+                </div>
+                
+                <!-- <a id="submit" href="#">SIGN UP FOR INVITE NOW</a> -->
+            
+            </div>
+            <button type="submit" class="btn btn-submit" name="count1">Save</button>
+            <!-- <button type="button" name="count1" class="togglel-btn2">Click me</button> -->
+            <!-- <div class="count1" name="count1">Clickme</div> -->
+        </form>
+        <button class="togglel-btn2 btn btn-submit" >NEXT</button>
+        <!--<button onclick="myFunction()">Click me</button> -->
+       
+    </div>
+</div>
+
+
+    </section>
+        
+        <!-- 44:40 -->
+
+<script>
+    var i = 0;
+    
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setTimeout(frame, 1000);
+            function frame() {
+            if (width >= 100) {
+                i = 0;
+            } else {
+                width="{{byval|escapejs}}";
+                elem.style.width = width + "%";
+            }
+            
+            }
+        }
+    
+
+    // var another = $('#sam').data("new_val");
+    var data = "{{byval|escapejs}}";
+    var dataNode = document.getElementById('sam');
+    dataNode.innerHTML="{{byval|escapejs}} %";
+    // dataNode.innerHTML=another;
+ 
+</script>
+
+</body>
+</html>
